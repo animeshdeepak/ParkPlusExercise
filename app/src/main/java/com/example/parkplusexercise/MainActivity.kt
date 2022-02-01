@@ -1,8 +1,8 @@
 package com.example.parkplusexercise
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.parkplusexercise.databinding.ActivityMainBinding
@@ -10,7 +10,7 @@ import com.example.parkplusexercise.model.Item
 import com.example.parkplusexercise.network.SingleEvent
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var viewModel : MainViewModel
+    private lateinit var viewModel: MainViewModel
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun onApiDataSuccess(event: SingleEvent<ArrayList<Item>>) {
         event.contentIfNotHandled?.let {
-            showToastMessage( it[0].assigneesUrl ?: "no data")
+            showToastMessage(it[0].assigneesUrl ?: "no data")
         }
     }
 
