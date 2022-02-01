@@ -20,8 +20,8 @@ class RepoItemAdapter(private var itemList: ArrayList<Item>) :
     override fun getItemCount() = itemList.size
 
     fun addItem(_itemList: ArrayList<Item>) {
-        itemList = _itemList
-        notifyDataSetChanged()
+        notifyItemRangeInserted(itemList.size, _itemList.size)
+        itemList.addAll(_itemList)
     }
 
     inner class RepoItemViewHolder(private val binding: RepoItemBinding) :

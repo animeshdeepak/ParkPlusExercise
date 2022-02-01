@@ -5,6 +5,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.parkplusexercise.R
 import com.example.parkplusexercise.base.SingleEvent
 import com.example.parkplusexercise.base.gone
@@ -13,6 +15,7 @@ import com.example.parkplusexercise.base.show
 import com.example.parkplusexercise.databinding.ActivityMainBinding
 import com.example.parkplusexercise.model.Item
 import com.example.parkplusexercise.network.ApiStatus
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: MainViewModel
@@ -46,8 +49,15 @@ class MainActivity : AppCompatActivity() {
     private fun setUpRecyclerView() {
         binding.itemRv.apply {
             repoItemAdapter = RepoItemAdapter(arrayListOf())
-            setHasFixedSize(true)
+            val layoutManager = LinearLayoutManager(this@MainActivity)
+            setLayoutManager(layoutManager)
+            val dividerItemDecoration = DividerItemDecoration(
+                binding.itemRv.context,
+                layoutManager.orientation
+            )
+            addItemDecoration(dividerItemDecoration)
             adapter = repoItemAdapter
+            repoItemAdapter.notifyItemInserted(0)
         }
     }
 
