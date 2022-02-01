@@ -1,4 +1,4 @@
-package com.example.parkplusexercise
+package com.example.parkplusexercise.main
 
 import com.example.parkplusexercise.model.Item
 import com.example.parkplusexercise.network.NetworkService

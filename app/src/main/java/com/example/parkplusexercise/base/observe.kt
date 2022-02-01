@@ -1,4 +1,4 @@
-package com.example.parkplusexercise
+package com.example.parkplusexercise.base
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData

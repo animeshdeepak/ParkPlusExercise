@@ -1,4 +1,4 @@
-package com.example.parkplusexercise
+package com.example.parkplusexercise.base
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.parkplusexercise.network.ApiStatus
 import com.example.parkplusexercise.network.NoConnectivityException
-import com.example.parkplusexercise.network.SingleEvent
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
 import retrofit2.HttpException

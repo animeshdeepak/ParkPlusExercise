@@ -1,4 +1,4 @@
-package com.example.parkplusexercise.network
+package com.example.parkplusexercise.base
 
 class SingleEvent<T : Any>(content: T?) {
     private val mContent: T
