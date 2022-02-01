@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         event.contentIfNotHandled?.let {
             if (it.size > 0) {
                 repoItemAdapter.addItem(it)
-//                pageCount++
+                pageCount++
             }
         }
     }
