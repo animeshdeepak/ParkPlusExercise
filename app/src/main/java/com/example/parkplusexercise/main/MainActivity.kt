@@ -47,18 +47,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpRecyclerView() {
+        repoItemAdapter = RepoItemAdapter(arrayListOf())
+        val layoutManager = LinearLayoutManager(this)
+        val dividerItemDecoration = DividerItemDecoration(
+            this,
+            layoutManager.orientation
+        )
         binding.itemRv.apply {
-            repoItemAdapter = RepoItemAdapter(arrayListOf())
-            val layoutManager = LinearLayoutManager(this@MainActivity)
             setLayoutManager(layoutManager)
-            val dividerItemDecoration = DividerItemDecoration(
-                binding.itemRv.context,
-                layoutManager.orientation
-            )
             addItemDecoration(dividerItemDecoration)
             adapter = repoItemAdapter
-            repoItemAdapter.notifyItemInserted(0)
         }
+        repoItemAdapter.notifyItemInserted(0)
     }
 
     private fun setUpProgressView() {
