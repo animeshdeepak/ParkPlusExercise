@@ -37,8 +37,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun onApiDataSuccess(event: SingleEvent<ArrayList<Item>>) {
         event.contentIfNotHandled?.let {
-            showToastMessage(it[0].name ?: "no data")
-            repoItemAdapter.addItem(it)
+            if (it.size > 0)
+                repoItemAdapter.addItem(it)
         }
     }
 
