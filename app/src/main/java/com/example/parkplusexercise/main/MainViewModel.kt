@@ -17,7 +17,7 @@ open class MainViewModel : BaseViewModel() {
     val apiData: LiveData<SingleEvent<ArrayList<Item>>>
         get() = _apiData
 
-    private fun getApiData(page: Int = 1, perPage: Int = 10) {
+    fun getApiData(page: Int = 1, perPage: Int = 10) {
         _isLoading.postValue(SingleEvent(ApiStatus.LOADING))
         addDisposable(
             MainRepository.callApi(page, perPage)

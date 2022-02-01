@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.parkplusexercise.R
 import com.example.parkplusexercise.base.SingleEvent
 import com.example.parkplusexercise.base.gone
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: MainViewModel
     private lateinit var binding: ActivityMainBinding
     private lateinit var repoItemAdapter: RepoItemAdapter
+    private var pageCount: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,8 +39,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun onApiDataSuccess(event: SingleEvent<ArrayList<Item>>) {
         event.contentIfNotHandled?.let {
-            if (it.size > 0)
+            if (it.size > 0) {
                 repoItemAdapter.addItem(it)
+//                pageCount++
+            }
         }
     }
 
@@ -57,6 +61,11 @@ class MainActivity : AppCompatActivity() {
             setLayoutManager(layoutManager)
             addItemDecoration(dividerItemDecoration)
             adapter = repoItemAdapter
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    viewModel.getApiData(page = pageCount, perPage = 10)
+                }
+            })
         }
         repoItemAdapter.notifyItemInserted(0)
     }
